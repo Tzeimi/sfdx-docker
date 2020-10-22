@@ -43,10 +43,10 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && npm --version
 
 COPY package.json .
+COPY package-lock.json .
 COPY commitlint.config.js .
 
 RUN apt update && apt -y install jq \
   && npm install \
-  && npm audit fix \
   && npm i sfdx-cli -g \
   && echo 'y' | sfdx plugins:install @salesforce/sfdx-scanner
