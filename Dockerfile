@@ -49,4 +49,5 @@ COPY commitlint.config.js .
 RUN apt update && apt -y install jq \
   && npm install \
   && npm i sfdx-cli -g \
+  && npm install @salesforce/lwc-jest --save-dev \
   && echo 'y' | sfdx plugins:install @salesforce/sfdx-scanner
