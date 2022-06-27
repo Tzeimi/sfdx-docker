@@ -1,6 +1,6 @@
 FROM openjdk:15.0.1-jdk-buster
 
-ENV NODE_VERSION 14.14.0
+ENV NODE_VERSION 16.9.0
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
@@ -50,4 +50,5 @@ RUN apt update && apt -y install jq \
   && npm install \
   && npm i sfdx-cli -g \
   && npm install @salesforce/lwc-jest --save-dev \
-  && echo 'y' | sfdx plugins:install @salesforce/sfdx-scanner
+  && echo 'y' | sfdx plugins:install @salesforce/sfdx-scanner \
+  && sfdx update
